@@ -1,0 +1,185 @@
+
+R version 3.6.1 (2019-07-05) -- Action of the Toes
+Copyright (C) 2019 The R Foundation for Statistical Computing
+Platform x86_64-w64-mingw32x64 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+ setwd(CUserskaivaOnedrivedesktopr-novice-inflammation)
+ dat - read.csv(datainflammation-01.csv, header = FALSE)
+ head(dat)
+  V1 V2 V3 V4 V5 V6 V7 V8 V9 V10 V11 V12 V13 V14 V15 V16 V17 V18 V19 V20
+1  0  0  1  3  1  2  4  7  8   3   3   3  10   5   7   4   7   7  12  18
+2  0  1  2  1  2  1  3  2  2   6  10  11   5   9   4   4   7  16   8   6
+3  0  1  1  3  3  2  6  2  5   9   5   7   4   5   4  15   5  11   9  10
+4  0  0  2  0  4  2  2  1  6   7  10   7   9  13   8   8  15  10  10   7
+5  0  1  1  3  3  1  3  5  2   4   4   7   6   5   3  10   8  10   6  17
+6  0  0  1  2  2  4  2  1  6   4   7   6   6   9   9  15   4  16  18  12
+  V21 V22 V23 V24 V25 V26 V27 V28 V29 V30 V31 V32 V33 V34 V35 V36 V37
+1   6  13  11  11   7   7   4   6   8   8   4   4   5   7   3   4   2
+2  18   4  12   5  12   7  11   5  11   3   3   5   4   4   5   5   1
+3  19  14  12  17   7  12  11   7   4   2  10   5   4   2   2   3   2
+4  17   4   4   7   6  15   6   4   9  11   3   5   6   3   3   4   2
+5   9  14   9   7  13   9  12   6   7   7   9   6   3   2   2   4   2
+6  12   5  18   9   5   3  10   3  12   7   8   4   7   3   5   4   4
+  V38 V39 V40
+1   3   0   0
+2   1   0   1
+3   2   1   1
+4   3   2   1
+5   0   1   1
+6   3   2   1
+ class(dat)
+[1] data.frame
+ dim(data)
+NULL
+ dim(dat)
+[1] 60 40
+ dat[1,1]
+[1] 0
+ dat[30,20]
+[1] 16
+ dat[c(1,3,5),c(10,20)]
+  V10 V20
+1   3  18
+3   9  10
+5   4  17
+ 15
+[1] 1 2 3 4 5
+ 312
+ [1]  3  4  5  6  7  8  9 10 11 12
+ dat[14,110]
+  V1 V2 V3 V4 V5 V6 V7 V8 V9 V10
+1  0  0  1  3  1  2  4  7  8   3
+2  0  1  2  1  2  1  3  2  2   6
+3  0  1  1  3  3  2  6  2  5   9
+4  0  0  2  0  4  2  2  1  6   7
+ dat[5,]
+  V1 V2 V3 V4 V5 V6 V7 V8 V9 V10 V11 V12 V13 V14 V15 V16 V17 V18 V19 V20 V21 V22
+5  0  1  1  3  3  1  3  5  2   4   4   7   6   5   3  10   8  10   6  17   9  14
+  V23 V24 V25 V26 V27 V28 V29 V30 V31 V32 V33 V34 V35 V36 V37 V38 V39 V40
+5   9   7  13   9  12   6   7   7   9   6   3   2   2   4   2   0   1   1
+ patient_1 - dat[1,]
+ max(patient_1)
+[1] 18
+ min(dat[1,])
+[1] 0
+ mean(dat[,7])
+[1] 3.8
+ sd(dat[,7])
+[1] 1.725187
+ summary(dat[,14])
+       V1          V2             V3              V4      
+ Min.   0   Min.   0.00   Min.   0.000   Min.   0.00  
+ 1st Qu.0   1st Qu.0.00   1st Qu.1.000   1st Qu.1.00  
+ Median 0   Median 0.00   Median 1.000   Median 2.00  
+ Mean   0   Mean   0.45   Mean   1.117   Mean   1.75  
+ 3rd Qu.0   3rd Qu.1.00   3rd Qu.2.000   3rd Qu.3.00  
+ Max.   0   Max.   1.00   Max.   2.000   Max.   3.00  
+ dat[,14]
+   V1 V2 V3 V4
+1   0  0  1  3
+2   0  1  2  1
+3   0  1  1  3
+4   0  0  2  0
+5   0  1  1  3
+6   0  0  1  2
+7   0  0  2  2
+8   0  0  1  2
+9   0  0  0  3
+10  0  1  1  2
+11  0  1  0  0
+12  0  1  0  0
+13  0  0  2  1
+14  0  0  0  0
+15  0  1  2  1
+16  0  1  1  0
+17  0  0  0  0
+18  0  0  0  1
+19  0  0  2  1
+20  0  1  2  0
+21  0  1  1  3
+22  0  0  2  3
+23  0  0  0  3
+24  0  1  1  1
+25  0  1  1  1
+26  0  0  2  1
+27  0  0  1  2
+28  0  0  1  1
+29  0  0  2  2
+30  0  0  0  1
+31  0  1  1  0
+32  0  0  2  3
+33  0  1  2  2
+34  0  0  2  1
+35  0  0  1  2
+36  0  0  0  3
+37  0  1  2  2
+38  0  1  1  2
+39  0  1  0  3
+40  0  1  1  3
+41  0  0  0  2
+42  0  0  1  3
+43  0  1  1  3
+44  0  0  1  3
+45  0  1  1  3
+46  0  1  2  2
+47  0  0  2  3
+48  0  1  1  3
+49  0  0  1  3
+50  0  0  1  2
+51  0  1  2  1
+52  0  1  2  2
+53  0  0  0  2
+54  0  0  2  1
+55  0  1  2  1
+56  0  0  1  3
+57  0  1  1  2
+58  0  1  1  1
+59  0  0  0  1
+60  0  0  1  0
+ avg_patient_inflammation - apply(dat, 1, mean)
+ avg_patient_inflammation
+ [1] 5.450 5.425 6.100 5.900 5.550 6.225 5.975 6.650 6.625 6.525 6.775 5.800 6.225
+[14] 5.750 5.225 6.300 6.550 5.700 5.850 6.550 5.775 5.825 6.175 6.100 5.800 6.425
+[27] 6.050 6.025 6.175 6.550 6.175 6.350 6.725 6.125 7.075 5.725 5.925 6.150 6.075
+[40] 5.750 5.975 5.725 6.300 5.900 6.750 5.925 7.225 6.150 5.950 6.275 5.700 6.100
+[53] 6.825 5.975 6.725 5.700 6.250 6.400 7.050 5.900
+ avg_patient_inflammation(1)
+Error in avg_patient_inflammation(1)  
+  could not find function avg_patient_inflammation
+ avg_patient_inflammation[1]
+[1] 5.45
+ avg_day_inflammation - apply(dat, 2, mean)
+ avg_day_inflammation
+        V1         V2         V3         V4         V5         V6         V7 
+ 0.0000000  0.4500000  1.1166667  1.7500000  2.4333333  3.1500000  3.8000000 
+        V8         V9        V10        V11        V12        V13        V14 
+ 3.8833333  5.2333333  5.5166667  5.9500000  5.9000000  8.3500000  7.7333333 
+       V15        V16        V17        V18        V19        V20        V21 
+ 8.3666667  9.5000000  9.5833333 10.6333333 11.5666667 12.3500000 13.2500000 
+       V22        V23        V24        V25        V26        V27        V28 
+11.9666667 11.0333333 10.1666667 10.0000000  8.6666667  9.1500000  7.2500000 
+       V29        V30        V31        V32        V33        V34        V35 
+ 7.3333333  6.5833333  6.0666667  5.9500000  5.1166667  3.6000000  3.3000000 
+       V36        V37        V38        V39        V40 
+ 3.5666667  2.4833333  1.5000000  1.1333333  0.5666667 
+ # we just calculated the mean of the average patient per day and the mean of the days
+ animal - c(m,o,n,k,e,y)
+ animal[13]
+[1] m o n
+ animal[46]
+[1] k e y
+ max(dat[5,37])
+[1] 3
+ # it goes from rows, columns
