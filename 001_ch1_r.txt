@@ -1,7 +1,7 @@
 
-R version 3.6.1 (2019-07-05) -- Action of the Toes
+R version 3.6.1 (2019-07-05) -- "Action of the Toes"
 Copyright (C) 2019 The R Foundation for Statistical Computing
-Platform x86_64-w64-mingw32x64 (64-bit)
+Platform: x86_64-w64-mingw32/x64 (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
@@ -15,9 +15,9 @@ Type 'demo()' for some demos, 'help()' for on-line help, or
 'help.start()' for an HTML browser interface to help.
 Type 'q()' to quit R.
 
- setwd(CUserskaivaOnedrivedesktopr-novice-inflammation)
- dat - read.csv(datainflammation-01.csv, header = FALSE)
- head(dat)
+> setwd("C:/Users/kaiva/Onedrive/desktop/r-novice-inflammation/")
+> dat <- read.csv("data/inflammation-01.csv", header = FALSE)
+> head(dat)
   V1 V2 V3 V4 V5 V6 V7 V8 V9 V10 V11 V12 V13 V14 V15 V16 V17 V18 V19 V20
 1  0  0  1  3  1  2  4  7  8   3   3   3  10   5   7   4   7   7  12  18
 2  0  1  2  1  2  1  3  2  2   6  10  11   5   9   4   4   7  16   8   6
@@ -39,54 +39,54 @@ Type 'q()' to quit R.
 4   3   2   1
 5   0   1   1
 6   3   2   1
- class(dat)
-[1] data.frame
- dim(data)
+> class(dat)
+[1] "data.frame"
+> dim(data)
 NULL
- dim(dat)
+> dim(dat)
 [1] 60 40
- dat[1,1]
+> dat[1,1]
 [1] 0
- dat[30,20]
+> dat[30,20]
 [1] 16
- dat[c(1,3,5),c(10,20)]
+> dat[c(1,3,5),c(10,20)]
   V10 V20
 1   3  18
 3   9  10
 5   4  17
- 15
+> 1:5
 [1] 1 2 3 4 5
- 312
+> 3:12
  [1]  3  4  5  6  7  8  9 10 11 12
- dat[14,110]
+> dat[1:4,1:10]
   V1 V2 V3 V4 V5 V6 V7 V8 V9 V10
 1  0  0  1  3  1  2  4  7  8   3
 2  0  1  2  1  2  1  3  2  2   6
 3  0  1  1  3  3  2  6  2  5   9
 4  0  0  2  0  4  2  2  1  6   7
- dat[5,]
+> dat[5,]
   V1 V2 V3 V4 V5 V6 V7 V8 V9 V10 V11 V12 V13 V14 V15 V16 V17 V18 V19 V20 V21 V22
 5  0  1  1  3  3  1  3  5  2   4   4   7   6   5   3  10   8  10   6  17   9  14
   V23 V24 V25 V26 V27 V28 V29 V30 V31 V32 V33 V34 V35 V36 V37 V38 V39 V40
 5   9   7  13   9  12   6   7   7   9   6   3   2   2   4   2   0   1   1
- patient_1 - dat[1,]
- max(patient_1)
+> patient_1 <- dat[1,]
+> max(patient_1)
 [1] 18
- min(dat[1,])
+> min(dat[1,])
 [1] 0
- mean(dat[,7])
+> mean(dat[,7])
 [1] 3.8
- sd(dat[,7])
+> sd(dat[,7])
 [1] 1.725187
- summary(dat[,14])
+> summary(dat[,1:4])
        V1          V2             V3              V4      
- Min.   0   Min.   0.00   Min.   0.000   Min.   0.00  
- 1st Qu.0   1st Qu.0.00   1st Qu.1.000   1st Qu.1.00  
- Median 0   Median 0.00   Median 1.000   Median 2.00  
- Mean   0   Mean   0.45   Mean   1.117   Mean   1.75  
- 3rd Qu.0   3rd Qu.1.00   3rd Qu.2.000   3rd Qu.3.00  
- Max.   0   Max.   1.00   Max.   2.000   Max.   3.00  
- dat[,14]
+ Min.   :0   Min.   :0.00   Min.   :0.000   Min.   :0.00  
+ 1st Qu.:0   1st Qu.:0.00   1st Qu.:1.000   1st Qu.:1.00  
+ Median :0   Median :0.00   Median :1.000   Median :2.00  
+ Mean   :0   Mean   :0.45   Mean   :1.117   Mean   :1.75  
+ 3rd Qu.:0   3rd Qu.:1.00   3rd Qu.:2.000   3rd Qu.:3.00  
+ Max.   :0   Max.   :1.00   Max.   :2.000   Max.   :3.00  
+> dat[,1:4]
    V1 V2 V3 V4
 1   0  0  1  3
 2   0  1  2  1
@@ -148,20 +148,20 @@ NULL
 58  0  1  1  1
 59  0  0  0  1
 60  0  0  1  0
- avg_patient_inflammation - apply(dat, 1, mean)
- avg_patient_inflammation
+> avg_patient_inflammation <- apply(dat, 1, mean)
+> avg_patient_inflammation
  [1] 5.450 5.425 6.100 5.900 5.550 6.225 5.975 6.650 6.625 6.525 6.775 5.800 6.225
 [14] 5.750 5.225 6.300 6.550 5.700 5.850 6.550 5.775 5.825 6.175 6.100 5.800 6.425
 [27] 6.050 6.025 6.175 6.550 6.175 6.350 6.725 6.125 7.075 5.725 5.925 6.150 6.075
 [40] 5.750 5.975 5.725 6.300 5.900 6.750 5.925 7.225 6.150 5.950 6.275 5.700 6.100
 [53] 6.825 5.975 6.725 5.700 6.250 6.400 7.050 5.900
- avg_patient_inflammation(1)
-Error in avg_patient_inflammation(1)  
-  could not find function avg_patient_inflammation
- avg_patient_inflammation[1]
+> avg_patient_inflammation(1)
+Error in avg_patient_inflammation(1) : 
+  could not find function "avg_patient_inflammation"
+> avg_patient_inflammation[1]
 [1] 5.45
- avg_day_inflammation - apply(dat, 2, mean)
- avg_day_inflammation
+> avg_day_inflammation <- apply(dat, 2, mean)
+> avg_day_inflammation
         V1         V2         V3         V4         V5         V6         V7 
  0.0000000  0.4500000  1.1166667  1.7500000  2.4333333  3.1500000  3.8000000 
         V8         V9        V10        V11        V12        V13        V14 
@@ -174,12 +174,184 @@ Error in avg_patient_inflammation(1)
  7.3333333  6.5833333  6.0666667  5.9500000  5.1166667  3.6000000  3.3000000 
        V36        V37        V38        V39        V40 
  3.5666667  2.4833333  1.5000000  1.1333333  0.5666667 
- # we just calculated the mean of the average patient per day and the mean of the days
- animal - c(m,o,n,k,e,y)
- animal[13]
-[1] m o n
- animal[46]
-[1] k e y
- max(dat[5,37])
+> # we just calculated the mean of the average patient per day and the mean of the days
+> animal <- c("m","o","n","k","e","y")
+> animal[1:3]
+[1] "m" "o" "n"
+> animal[4:6]
+[1] "k" "e" "y"
+> max(dat[5,3:7])
 [1] 3
- # it goes from rows, columns
+> # it goes from rows, columns
+> whichPatients <- seq(2, 60, 2)
+> whichDays <- seq(1,5)
+> dat2 <- dat
+> dim(dat2[whichPatients,whichDays])
+[1] 30  5
+> dat2[whichPatients, whichDays] <- dat2[whichPatients, whichDays] /2
+> day2
+Error: object 'day2' not found
+> dat2
+   V1  V2  V3  V4  V5 V6 V7 V8 V9 V10
+1   0 0.0 1.0 3.0 1.0  2  4  7  8   3
+2   0 0.5 1.0 0.5 1.0  1  3  2  2   6
+3   0 1.0 1.0 3.0 3.0  2  6  2  5   9
+4   0 0.0 1.0 0.0 2.0  2  2  1  6   7
+5   0 1.0 1.0 3.0 3.0  1  3  5  2   4
+6   0 0.0 0.5 1.0 1.0  4  2  1  6   4
+7   0 0.0 2.0 2.0 4.0  2  2  5  5   8
+8   0 0.0 0.5 1.0 1.5  1  2  3  5   3
+9   0 0.0 0.0 3.0 1.0  5  6  5  5   8
+10  0 0.5 0.5 1.0 0.5  3  5  3  5   8
+11  0 1.0 0.0 0.0 4.0  3  3  5  5   4
+12  0 0.5 0.0 0.0 1.5  4  2  7  8   5
+13  0 0.0 2.0 1.0 4.0  3  6  4  6   7
+14  0 0.0 0.0 0.0 0.5  3  1  6  6   5
+15  0 1.0 2.0 1.0 1.0  1  4  1  5   2
+16  0 0.5 0.5 0.0 0.5  2  4  3  6   4
+17  0 0.0 0.0 0.0 2.0  3  6  5  7   4
+18  0 0.0 0.0 0.5 1.0  1  4  3  6   7
+19  0 0.0 2.0 1.0 2.0  5  4  2  7   8
+20  0 0.5 1.0 0.0 0.5  4  3  2  2   7
+21  0 1.0 1.0 3.0 1.0  4  4  1  8   2
+22  0 0.0 1.0 1.5 1.0  3  2  6  3   8
+23  0 0.0 0.0 3.0 4.0  5  1  7  7   8
+24  0 0.5 0.5 0.5 0.5  3  3  2  6   3
+25  0 1.0 1.0 1.0 2.0  3  5  3  6   3
+   V11 V12 V13 V14 V15 V16 V17 V18 V19
+1    3   3  10   5   7   4   7   7  12
+2   10  11   5   9   4   4   7  16   8
+3    5   7   4   5   4  15   5  11   9
+4   10   7   9  13   8   8  15  10  10
+5    4   7   6   5   3  10   8  10   6
+6    7   6   6   9   9  15   4  16  18
+7    6   5  11   9   4  13   5  12  10
+8    7   8   8   5  10   9  15  11  18
+9    2   4  11  12  10  11   9  10  17
+10   6   8  12   5  13   6  13   8  16
+11   5   8   7  10  13   3   7  13  15
+12   2   8  11   5   5   8  14  11   6
+13   9   9   3  11   6  12   4  17  13
+14   5   6   3   6  13   3  10  13   9
+15   3   3  10   7  13   5   7  17   6
+16   7   5   5   7   5  10   7   8  18
+17   3   2  10   7   9  11  12   5  12
+18   4   2  12   6  12   4  14   7   8
+19   4   7  11   9   8  11  15  17  11
+20   3   3  12  13  11  13   6   5   9
+21   2   3  12  12  10  15  13   6   5
+22   7   4   6   6   9   5  12  12   8
+23   2   5  12   4  10  14   5   5  17
+24   9   7   8   8   4  13   7  14  11
+25   7  10   3   8  12   4  12   9  15
+   V20 V21 V22 V23 V24 V25 V26 V27 V28
+1   18   6  13  11  11   7   7   4   6
+2    6  18   4  12   5  12   7  11   5
+3   10  19  14  12  17   7  12  11   7
+4    7  17   4   4   7   6  15   6   4
+5   17   9  14   9   7  13   9  12   6
+6   12  12   5  18   9   5   3  10   3
+7    6   9  17  15   8   9   3  13   7
+8   19  20   8   5  13  15  10   6  10
+9   11   6  16  12   6   8  14   6  13
+10   8  18  15  16  14  12   7   3   8
+11  18   8  15  15  16  11  14  12   4
+12  11   9  16  18   6  12   5   4   3
+13  15  13  12   8   7   4   7  12   9
+14  16  15   9  11   4   6   4  11  11
+15   9  12  13  10   4  12   4   6   7
+16  17   9   8  12  11  11  11  14   6
+17   9  13  19  14  17   5  13   8  11
+18  14  13  19   6   9  12   6   4  13
+19  12   7  12   7   6   7   4  13   5
+20  16   9  19  16  11   8   9  14  12
+21   5  18  19   9   6  11  12   7   6
+22   5  12  10  16   7  14  12   5   4
+23  13  16  15  13   6  12   9  10   3
+24  15  14  13   5  13   7  14   9  10
+25   5  17  16   5  10  10  15   7   5
+   V29 V30 V31 V32 V33 V34 V35 V36 V37
+1    8   8   4   4   5   7   3   4   2
+2   11   3   3   5   4   4   5   5   1
+3    4   2  10   5   4   2   2   3   2
+4    9  11   3   5   6   3   3   4   2
+5    7   7   9   6   3   2   2   4   2
+6   12   7   8   4   7   3   5   4   4
+7    8   2   8   8   4   2   3   5   4
+8    6   7   4   9   3   5   2   5   3
+9   10  11   4   6   4   7   6   3   2
+10   9  11   2   5   4   5   1   4   1
+11  10  10   4   3   4   5   5   3   3
+12   5   7   8   3   5   4   5   5   4
+13   5   6   5   4   7   3   5   4   2
+14  12   3   5   8   7   4   6   4   1
+15   6  10   8   2   5   1   3   4   2
+16  11   2  10   9   5   6   5   3   4
+17   5  10   9   8   7   5   3   1   4
+18   6   7   2   3   6   5   4   2   3
+19   7   6   6   9   2   1   1   2   2
+20  11   9   6   6   6   1   1   2   4
+21   3   6   3   2   4   3   1   5   4
+22   6   9   8   5   6   6   1   4   3
+23   3   7   4   4   8   2   6   5   1
+24   5  11   5   3   5   1   1   4   4
+25   3  11   5   5   6   1   1   1   1
+   V38 V39 V40
+1    3   0   0
+2    1   0   1
+3    2   1   1
+4    3   2   1
+5    0   1   1
+6    3   2   1
+7    1   1   1
+8    2   2   1
+9    1   0   0
+10   2   0   0
+11   2   2   1
+12   0   1   1
+13   3   0   1
+14   3   0   0
+15   0   2   0
+16   2   2   0
+17   0   2   1
+18   0   1   0
+19   0   1   0
+20   3   1   1
+21   2   2   0
+22   0   2   0
+23   0   1   0
+24   1   2   0
+25   0   2   1
+ [ reached 'max' / getOption("max.print") -- omitted 35 rows ]
+> apply(dat[1:5,], 1, mean)
+    1     2     3     4     5 
+5.450 5.425 6.100 5.900 5.550 
+> apply(dat[, 1:10], 2, mean)
+      V1       V2       V3       V4 
+0.000000 0.450000 1.116667 1.750000 
+      V5       V6       V7       V8 
+2.433333 3.150000 3.800000 3.883333 
+      V9      V10 
+5.233333 5.516667 
+> apply(dat[,seq(1, 40, by = 2)], 2 , mean)
+       V1        V3        V5 
+ 0.000000  1.116667  2.433333 
+       V7        V9       V11 
+ 3.800000  5.233333  5.950000 
+      V13       V15       V17 
+ 8.350000  8.366667  9.583333 
+      V19       V21       V23 
+11.566667 13.250000 11.033333 
+      V25       V27       V29 
+10.000000  9.150000  7.333333 
+      V31       V33       V35 
+ 6.066667  5.116667  3.300000 
+      V37       V39 
+ 2.483333  1.133333 
+> plot(avg_day_inflammation)
+> max_day_inflammation <- apply(dat, 2, max)
+> plot(max_day_inflammation)
+> min_day_inflammation <- apply(dat, 2 , min)
+> plot(min_day_inflammation)
+> sd_day_inflammation <- apply(dat, 2, sd)
+> plot(sd_day_inflammation)
